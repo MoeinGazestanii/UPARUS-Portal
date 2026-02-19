@@ -1,6 +1,6 @@
 # PROTOTYPE UPARUS: Genomic Resources for the Parus Genus 🧬🐦
 
-[![Website Status](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://moeingazestanii.github.io/parus-genomics-explorer/) [![Maintained by](https://img.shields.io/badge/Maintained%20by-Gossmann%20Lab-blue.svg)](https://www.tu-dortmund.de/)
+[![Website Status](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://moeingazestanii.github.io/parus-genomics-explorer/) [![Maintained by](https://img.shields.io/badge/Maintained%20by-Gossmann%20Lab-blue.svg)](https://csb.bci.tu-dortmund.de/)
 
 ## 📌 Overview
 This repository hosts the source code and static web pages for the **UPARUS (Useful Parus Sequences)** project. The platform provides public access to genomic resources and metadata of birds from the *Parus* genus (most notably the great tit, *Parus major*). 
