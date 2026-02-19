@@ -7,7 +7,7 @@ This repository hosts the source code and static web pages for the **UPARUS (Use
 
 The goal of this project is to provide a database of sequence data and corresponding metadata to facilitate collaboration between researchers and provide public access to these datasets.
 
-🌐 **Live Website:** [Click here to visit the UPARUS Portal](https://github.com/MoeinGazestanii/parus-genomics-explorer) 
+🌐 **Live Website:** [Click here to visit the UPARUS Portal]([https://github.com/MoeinGazestanii/parus-genomics-explorer](https://moeingazestanii.github.io/parus-genomics-explorer/)) 
 
 ---
 
