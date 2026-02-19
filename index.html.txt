@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parus Genus - Genomic Resources</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f4f7f6; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        p { line-height: 1.8; color: #444; font-size: 1.1em; }
+        /* استایل قاب نقشه */
+        iframe { width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Genomic Resources: Parus Genus</h1>
+        
+        <p>This website provides public access to genomic resources of birds from the Parus genus. Parus is a genus of old-world birds in the tit family. Its most known member is the great tit (Parus major), which is also the species represented by the most samples on this website. However, in the future datasets from other Parus species and their many subspecies may be added here.</p>
+        
+        <p>We provide a database of sequence data and the corresponding metadata of the samples to facilitate collaboration between researchers and provide access to this data to the public.</p>
+        
+        <iframe src="Clean_Embed_Map.html"></iframe>
+    </div>
+</body>
+</html>
