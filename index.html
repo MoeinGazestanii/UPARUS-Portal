@@ -4,126 +4,236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parus Genus - Genomic Resources</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f4f7f6; }
-        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
-        p { line-height: 1.8; color: #444; font-size: 1.1em; }
-        
-        /* --- استایل‌های تب (Tabs) --- */
-        .tabs { display: flex; border-bottom: 2px solid #ddd; margin-top: 30px; flex-wrap: wrap; }
-        .tab-btn {
-            background: none; border: none; padding: 12px 20px; font-size: 1.05em; 
-            cursor: pointer; color: #666; font-weight: 500;
-            border-bottom: 3px solid transparent; margin-bottom: -2px; transition: 0.3s;
+        :root {
+            --primary: #2563eb;
+            --bg-body: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
         }
-        .tab-btn:hover { color: #0d6efd; }
-        .tab-btn.active { color: #0d6efd; border-bottom: 3px solid #0d6efd; font-weight: bold; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg-body); 
+            color: var(--text-main); 
+            line-height: 1.6;
+        }
+
+        /* --- بخش هدر بالا (Hero Section) --- */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 60px 20px 80px 20px;
+            text-align: center;
+        }
+        .hero h1 { 
+            font-size: 2.8rem; 
+            font-weight: 700; 
+            margin: 0 0 20px 0; 
+            letter-spacing: -0.5px;
+        }
+        .hero p { 
+            max-width: 900px; 
+            margin: 0 auto 15px auto; 
+            color: #cbd5e1; 
+            font-size: 1.1rem; 
+        }
+
+        /* --- محفظه اصلی سایت --- */
+        .container { 
+            max-width: 1300px; 
+            margin: -40px auto 40px auto; /* بالا کشیدن کارت روی هدر */
+            padding: 0 20px; 
+        }
         
-        .tab-content { display: none; padding-top: 20px; }
-        .tab-content.active { display: block; animation: fadeIn 0.4s; }
+        .dashboard-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 30px;
+        }
+
+        /* --- استایل تب‌های مدرن (Pills) --- */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .tabs { 
+            display: inline-flex; 
+            background: #f1f5f9; 
+            padding: 8px; 
+            border-radius: 50px; 
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .tab-btn {
+            background: transparent; 
+            border: none; 
+            padding: 12px 24px; 
+            font-size: 1rem; 
+            cursor: pointer; 
+            color: var(--text-muted); 
+            font-weight: 600;
+            border-radius: 40px; 
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-btn:hover { color: var(--text-main); }
+        .tab-btn.active { 
+            background: white; 
+            color: var(--primary); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+
+        /* --- محتوای تب‌ها --- */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.4s ease forwards; }
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        iframe { 
+            width: 100%; 
+            height: 750px; 
+            border: none; 
+            border-radius: 12px;
+            background: #f8fafc;
+        }
+
+        /* --- استایل کارت‌های مقالات و تماس --- */
+        .grid-layout {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+        }
+        .info-card { 
+            padding: 30px; 
+            background: white; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 16px; 
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
         
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        iframe { width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px; }
-        
-        /* استایل اختصاصی برای مقالات و تماس */
-        .content-box { padding: 30px; background: #fafafa; border: 1px solid #eaeaea; border-radius: 8px; }
-        
-        /* استایل لیست مقالات */
-        .pub-list { list-style-type: none; padding: 0; margin: 0; }
-        .pub-list li { margin-bottom: 25px; line-height: 1.7; color: #333; padding-left: 15px; border-left: 4px solid #0d6efd; }
-        .custom-link { color: #0d6efd; text-decoration: none; font-weight: bold; word-break: break-all; }
+        /* مقالات */
+        .pub-list { list-style: none; padding: 0; margin: 0; }
+        .pub-list li { margin-bottom: 25px; border-left: 4px solid var(--primary); padding-left: 20px; }
+        .pub-title { font-weight: 600; color: var(--text-main); font-size: 1.1rem; margin-bottom: 5px;}
+        .pub-authors { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px; }
+        .custom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;}
         .custom-link:hover { text-decoration: underline; }
-        
-        /* استایل بخش تماس */
-        .contact-details { margin-top: 25px; font-size: 1.05em; line-height: 1.8; color: #333; }
-        .contact-details p { margin: 8px 0; }
-        .address-box { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; color: #555; }
+
+        /* تماس با ما */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px;}
+        .contact-person, .contact-address { background: #f8fafc; padding: 25px; border-radius: 12px; }
+        .contact-person h4, .contact-address h4 { margin-top: 0; color: #0f172a; font-size: 1.2rem; margin-bottom: 15px;}
+        .contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; color: var(--text-muted); }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <header class="hero">
         <h1>Genomic Resources: Parus Genus</h1>
-        <p>This website provides public access to genomic resources of birds from the Parus genus. Parus is a genus of old-world birds in the tit family. Its most known member is the great tit (Parus major), which is also the species represented by the most samples on this website. However, in the future datasets from other Parus species and their many subspecies may be added here.</p>
-        <p>We provide a database of sequence data and the corresponding metadata of the samples to facilitate collaboration between researchers and provide access to this data to the public.</p>
-        
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab('mapTab')" id="btnMap">📍 Map View</button>
-            <button class="tab-btn" onclick="openTab('tableTab')" id="btnTable">📊 Sequence Data</button>
-            <button class="tab-btn" onclick="openTab('infoTab')" id="btnInfo">📄 Sample Information</button>
-            <button class="tab-btn" onclick="openTab('pubTab')" id="btnPub">📚 Related Publications</button>
-            <button class="tab-btn" onclick="openTab('contactTab')" id="btnContact">✉️ Contact Information</button>
-        </div>
+        <p>This website provides public access to genomic resources of birds from the Parus genus. Parus is a genus of old-world birds in the tit family. Its most known member is the great tit (Parus major), which is also the species represented by the most samples on this website.</p>
+        <p>We provide a database of sequence data and the corresponding metadata to facilitate collaboration between researchers and provide access to the public.</p>
+    </header>
 
-        <div id="mapTab" class="tab-content active">
-            <iframe src="Final_Styled_Map.html"></iframe>
-        </div>
-
-        <div id="tableTab" class="tab-content">
-            <iframe src="samples_table.html" id="tableIframe"></iframe>
-        </div>
-
-        <div id="infoTab" class="tab-content">
-            <iframe src="sample_information.html" id="infoIframe"></iframe>
-        </div>
-
-        <div id="pubTab" class="tab-content">
-            <div class="content-box">
-                <h3 style="color: #2c3e50; margin-top: 0; margin-bottom: 20px;">List of publications in which the samples on this website were analyzed:</h3>
-                <ul class="pub-list">
-                    <li>
-                        Corcoran, P., Gossmann, T.I., Barton, H.J., The Great Tit HapMap Consortium, Slate, J., Zeng, K., 2017. Determinants of the Efficacy of Natural Selection on Coding and Noncoding Variability in Two Passerine Species. <i>Genome Biol. Evol.</i> 9, 2987–3007. <br>
-                        <a href="https://doi.org/10.1093/gbe/evx213" target="_blank" class="custom-link">🔗 https://doi.org/10.1093/gbe/evx213</a>
-                    </li>
-                    <li>
-                        Laine, V.N., Gossmann, T.I., Schachtschneider, K.M., Garroway, C.J., Madsen, O., Verhoeven, K.J.F., de Jager, V., Megens, H.-J., Warren, W.C., Minx, P., Crooijmans, R.P.M.A., Corcoran, P., Sheldon, B.C., Slate, J., Zeng, K., van Oers, K., Visser, M.E., Groenen, M.A.M., 2016. Evolutionary signals of selection on cognition from the great tit genome and methylome. <i>Nat. Commun.</i> 7, 10474. <br>
-                        <a href="https://doi.org/10.1038/ncomms10474" target="_blank" class="custom-link">🔗 https://doi.org/10.1038/ncomms10474</a>
-                    </li>
-                </ul>
+    <div class="container">
+        <div class="dashboard-card">
+            
+            <div class="tabs-container">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab('mapTab')" id="btnMap">🌍 Map View</button>
+                    <button class="tab-btn" onclick="openTab('tableTab')" id="btnTable">🧬 Sequence Data</button>
+                    <button class="tab-btn" onclick="openTab('infoTab')" id="btnInfo">📊 Metadata</button>
+                    <button class="tab-btn" onclick="openTab('pubTab')" id="btnPub">📚 Publications</button>
+                    <button class="tab-btn" onclick="openTab('contactTab')" id="btnContact">✉️ Contact</button>
+                </div>
             </div>
-        </div>
 
-        <div id="contactTab" class="tab-content">
-            <div class="content-box">
-                <p>The UPARUS database and this website are maintained by the Gossmann lab at the TU Dortmund University. The contact person is Nikolas Vellnow who maintains UPARUS with the aid of the student helper Mohammadmoein Hajihoseinigazestani (Moein Gazestani).</p>
-                
-                <div class="contact-details">
-                    <p><strong>Dr. Nikolas Vellnow</strong></p>
-                    <p>📧 E-Mail: <a href="mailto:nikolas.vellnow@tu-dortmund.de" class="custom-link">nikolas.vellnow@tu-dortmund.de</a></p>
-                    <p>📞 Tel.: <a href="tel:+492317556863" class="custom-link">+49-231-755-6863</a></p>
-                    
-                    <div class="address-box">
-                        <p><strong>Laboratory of Computational Systems Biology</strong></p>
-                        <p>Faculty of Biochemical and Chemical Engineering<br>
-                        Technical University Dortmund<br>
-                        Emil-Figge-Str. 66<br>
-                        44227 Dortmund, Germany</p>
+            <div id="mapTab" class="tab-content active">
+                <iframe src="Final_Styled_Map.html"></iframe>
+            </div>
+
+            <div id="tableTab" class="tab-content">
+                <iframe src="samples_table.html" id="tableIframe"></iframe>
+            </div>
+
+            <div id="infoTab" class="tab-content">
+                <iframe src="sample_information.html" id="infoIframe"></iframe>
+            </div>
+
+            <div id="pubTab" class="tab-content">
+                <div class="grid-layout">
+                    <div class="info-card">
+                        <ul class="pub-list">
+                            <li>
+                                <div class="pub-title">Determinants of the Efficacy of Natural Selection on Coding and Noncoding Variability in Two Passerine Species.</div>
+                                <div class="pub-authors">Corcoran, P., Gossmann, T.I., Barton, H.J., The Great Tit HapMap Consortium, Slate, J., Zeng, K. (2017) | <i>Genome Biol. Evol. 9, 2987–3007</i></div>
+                                <a href="https://doi.org/10.1093/gbe/evx213" target="_blank" class="custom-link">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                    View on Oxford Academic (DOI)
+                                </a>
+                            </li>
+                            <li>
+                                <div class="pub-title">Evolutionary signals of selection on cognition from the great tit genome and methylome.</div>
+                                <div class="pub-authors">Laine, V.N., Gossmann, T.I., Schachtschneider, K.M., et al. (2016) | <i>Nat. Commun. 7, 10474</i></div>
+                                <a href="https://doi.org/10.1038/ncomms10474" target="_blank" class="custom-link">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                    View on Nature (DOI)
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
 
+            <div id="contactTab" class="tab-content">
+                <div class="info-card">
+                    <p style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 25px;">
+                        The <strong>UPARUS</strong> database and this website are maintained by the Gossmann lab at the TU Dortmund University. 
+                        The contact person is Nikolas Vellnow who maintains UPARUS with the aid of the student helper Mohammadmoein Hajihoseinigazestani.
+                    </p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-person">
+                            <h4>👨‍🔬 Primary Contact</h4>
+                            <div class="contact-item"><strong>Dr. Nikolas Vellnow</strong></div>
+                            <div class="contact-item">✉️ <a href="mailto:nikolas.vellnow@tu-dortmund.de" class="custom-link">nikolas.vellnow@tu-dortmund.de</a></div>
+                            <div class="contact-item">📞 <a href="tel:+492317556863" class="custom-link">+49 231 755 6863</a></div>
+                        </div>
+                        
+                        <div class="contact-address">
+                            <h4>🏛️ Institution Address</h4>
+                            <div class="contact-item">Laboratory of Computational Systems Biology</div>
+                            <div class="contact-item">Faculty of Biochemical and Chemical Engineering</div>
+                            <div class="contact-item">Technical University Dortmund</div>
+                            <div class="contact-item">📍 Emil-Figge-Str. 66, 44227 Dortmund, Germany</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <script>
-        // عملکرد دکمه‌های تب برای ۵ حالت
         function openTab(tabId) {
-            // مخفی کردن همه تب‌ها
-            document.getElementById('mapTab').classList.remove('active');
-            document.getElementById('tableTab').classList.remove('active');
-            document.getElementById('infoTab').classList.remove('active');
-            document.getElementById('pubTab').classList.remove('active');
-            document.getElementById('contactTab').classList.remove('active');
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             
-            document.getElementById('btnMap').classList.remove('active');
-            document.getElementById('btnTable').classList.remove('active');
-            document.getElementById('btnInfo').classList.remove('active');
-            document.getElementById('btnPub').classList.remove('active');
-            document.getElementById('btnContact').classList.remove('active');
-            
-            // نمایش تب کلیک شده
             document.getElementById(tabId).classList.add('active');
+            
             if(tabId === 'mapTab') document.getElementById('btnMap').classList.add('active');
             if(tabId === 'tableTab') document.getElementById('btnTable').classList.add('active');
             if(tabId === 'infoTab') document.getElementById('btnInfo').classList.add('active');
@@ -131,7 +241,6 @@
             if(tabId === 'contactTab') document.getElementById('btnContact').classList.add('active');
         }
 
-        // ارتباط نقشه با تب جدول
         window.switchToTable = function(urlHash) {
             document.getElementById('tableIframe').src = urlHash;
             openTab('tableTab');
