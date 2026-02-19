@@ -32,7 +32,7 @@ The portal is purely static and hosted on **GitHub Pages**, ensuring fast loadin
 The UPARUS database and this website are maintained by the **Gossmann lab** at **TU Dortmund University**.
 
 - **Primary Contact:** Dr. Nikolas Vellnow (nikolas.vellnow@tu-dortmund.de)
-- **Database & Web Development:** Mohammadmoein Hajihoseinigazestani (Moein Gazestani) - *Student Helper*
+- **Database & Web Development:** Mohammadmoein Hajihoseinigazestani (Moein Gazestani) 
 
 **Institution:**
 > Laboratory of Computational Systems Biology <br>
