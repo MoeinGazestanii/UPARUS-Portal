@@ -24,7 +24,7 @@
             line-height: 1.6;
         }
 
-        
+        /* --- بخش هدر بالا (Hero Section) --- */
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -33,7 +33,7 @@
             position: relative; 
         }
         
-        
+        /* استایل عکس پرنده */
         .hero-logo {
             position: absolute;
             top: 15px;
@@ -43,7 +43,6 @@
             border: none; 
             border-radius: 0; 
             background: transparent; 
-            
             filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5)); 
             transition: transform 0.3s ease;
             z-index: 10;
@@ -76,18 +75,7 @@
             font-size: 1.1rem; 
         }
 
-        
-        @media (max-width: 768px) {
-            .hero-logo {
-                position: static;
-                display: block;
-                margin: 0 auto 20px auto;
-                width: 110px;
-                height: 110px;
-            }
-        }
-
-        
+        /* --- محفظه اصلی سایت --- */
         .container { 
             max-width: 1300px; 
             margin: -40px auto 40px auto; 
@@ -101,12 +89,29 @@
             padding: 30px;
         }
 
-        
+        /* --- استایل تب‌های چسبان (Sticky Tabs) --- */
+        /* تغییر اصلی در اینجا اعمال شد */
         .tabs-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            
+            /* دستورات چسبیدن به بالا */
+            position: sticky; 
+            top: 20px; 
+            z-index: 1000; 
+            
+            /* استایل شیشه‌ای */
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(10px); 
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
+            width: fit-content; 
+            margin-left: auto; 
+            margin-right: auto;
         }
+
         .tabs { 
             display: inline-flex; 
             background: #f1f5f9; 
@@ -134,7 +139,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         }
 
-        
+        /* --- محتوای تب‌ها --- */
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeInUp 0.4s ease forwards; }
         @keyframes fadeInUp { 
@@ -150,7 +155,7 @@
             background: #f8fafc;
         }
 
-        
+        /* --- استایل کارت‌های اطلاعات --- */
         .grid-layout {
             display: grid;
             gap: 20px;
@@ -168,7 +173,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
         
-        
+        /* مقالات */
         .pub-list { list-style: none; padding: 0; margin: 0; }
         .pub-list li { margin-bottom: 25px; border-left: 4px solid var(--primary); padding-left: 20px; }
         .pub-title { font-weight: 600; color: var(--text-main); font-size: 1.1rem; margin-bottom: 5px;}
@@ -176,7 +181,7 @@
         .custom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;}
         .custom-link:hover { text-decoration: underline; }
 
-        
+        /* تماس با ما */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px;}
         .contact-person, .contact-address { background: #f8fafc; padding: 25px; border-radius: 12px; }
         .contact-person h4, .contact-address h4 { margin-top: 0; color: #0f172a; font-size: 1.2rem; margin-bottom: 15px;}
@@ -185,7 +190,7 @@
 </head>
 <body>
 
-   <header class="hero">
+    <header class="hero">
         <img src="image_0.png" alt="Parus Major" class="hero-logo">
         
         <h1>UPARUS: Genomic Resources for the Parus genus</h1>
@@ -295,15 +300,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
