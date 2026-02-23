@@ -28,7 +28,8 @@
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            padding: 60px 20px 80px 20px;
+            /* 👇 تغییر مهم: کاهش فضای خالی بالا و پایین */
+            padding: 30px 20px 50px 20px; 
             text-align: center;
             position: relative; 
         }
@@ -36,9 +37,9 @@
         /* استایل عکس پرنده */
         .hero-logo {
             position: absolute;
-            top: 15px;
+            top: 10px; /* پرنده را کمی بالاتر بردم */
             right: 50px;
-            height: 180px; 
+            height: 160px; /* کمی کوچکتر کردم تا با هدرِ جمع‌وجور تناسب داشته باشد */
             width: auto; 
             border: none; 
             border-radius: 0; 
@@ -57,28 +58,28 @@
             .hero-logo {
                 position: static;
                 display: block;
-                margin: 0 auto 20px auto;
-                height: 140px;
+                margin: 0 auto 10px auto;
+                height: 120px;
             }
         }
 
         .hero h1 { 
-            font-size: 2.8rem; 
+            font-size: 2.2rem; /* کمی فونت را جمع‌وجورتر کردم */
             font-weight: 700; 
-            margin: 0 0 20px 0; 
+            margin: 0 0 10px 0; /* فاصله زیر تیتر کمتر شد */
             letter-spacing: -0.5px;
         }
         .hero p { 
             max-width: 900px; 
-            margin: 0 auto 15px auto; 
+            margin: 0 auto 10px auto; /* فاصله بین پاراگراف‌ها کمتر شد */
             color: #cbd5e1; 
-            font-size: 1.1rem; 
+            font-size: 1.05rem; 
         }
 
         /* --- محفظه اصلی سایت --- */
         .container { 
             max-width: 1300px; 
-            margin: -40px auto 40px auto; 
+            margin: -30px auto 40px auto; /* کارت سفید را کمی کمتر بالا کشیدم تا روی متن نیفتد */
             padding: 0 20px; 
         }
         
@@ -90,18 +91,13 @@
         }
 
         /* --- استایل تب‌های چسبان (Sticky Tabs) --- */
-        /* تغییر اصلی در اینجا اعمال شد */
         .tabs-container {
             display: flex;
             justify-content: center;
             margin-bottom: 25px;
-            
-            /* دستورات چسبیدن به بالا */
             position: sticky; 
             top: 20px; 
             z-index: 1000; 
-            
-            /* استایل شیشه‌ای */
             background: rgba(255, 255, 255, 0.85); 
             backdrop-filter: blur(10px); 
             padding: 10px 20px;
@@ -300,4 +296,3 @@
     </script>
 </body>
 </html>
-
