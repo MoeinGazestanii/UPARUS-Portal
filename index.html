@@ -34,67 +34,60 @@
             overflow: hidden; 
         }
         
-        /* --- استایل لوگو (کادر سفید ضخیم) --- */
+        /* --- استایل لوگو (کادر سفید یک‌چهارم دایره - ساده شده) --- */
         .logo-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: 340px;  
-            height: 340px; 
+            width: 280px;  /* سایز مناسب برای کادر سفید */
+            height: 280px; 
             background-color: white; 
-            border-bottom-right-radius: 100%; 
-            box-shadow: 5px 5px 25px rgba(0,0,0,0.25); 
+            border-bottom-right-radius: 100%; /* انحنای یک‌چهارم دایره */
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); /* سایه نرم */
             z-index: 10;
         }
 
-        .logo-inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 300px; 
-            height: 300px;
-            background-color: rgb(180, 160, 140); 
-            border-bottom-right-radius: 100%; 
-            overflow: hidden; 
-        }
-
+        /* --- استایل خود عکس پرنده (داخل کادر سفید) --- */
         .hero-logo {
             position: absolute;
-            top: -20px;  
-            left: 20px;  
-            width: 280px; 
+            top: 25px;   /* تنظیم دقیق جای پرنده داخل انحنا */
+            left: 25px;  
+            width: 200px; /* سایز پرنده */
             height: auto;
+            /* سایه دادن به خود پرنده تا از زمینه سفید جدا شود */
+            filter: drop-shadow(5px 10px 10px rgba(0,0,0,0.3)); 
             transition: transform 0.3s ease;
         }
 
+        /* افکت هاور */
         .logo-container:hover .hero-logo {
             transform: scale(1.08) rotate(3deg); 
         }
 
-        /* تنظیمات موبایل */
+        /* تنظیمات موبایل (دایره ساده وسط) */
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
-                width: 180px;
-                height: 180px;
+                width: 160px;
+                height: 160px;
                 margin: 0 auto 25px auto;
-                border-radius: 50%; 
+                border-radius: 50%; /* دایره کامل */
                 top: auto;
                 left: auto;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                background-color: rgba(255,255,255,0.15); /* کمی شفاف در موبایل */
             }
-            .logo-inner {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                top: 15px; 
-                left: 15px;
-            }
+            
             .hero-logo {
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%); 
-                width: 140px;
+                transform: translate(-50%, -50%); /* مرکز چین کردن */
+                width: 130px;
+                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.3));
+            }
+
+            .logo-container:hover .hero-logo {
+                 transform: translate(-50%, -50%) scale(1.08);
             }
         }
 
@@ -216,12 +209,11 @@
             flex: 1;
             min-width: 300px;
             display: flex;
-            justify-content: center; /* تصویر در مرکز ستون خود قرار گیرد */
+            justify-content: center;
         }
         .pipeline-image img {
-            /* 👇 تغییر سایز عکس: محدود کردن عرض */
-            max-width: 500px; 
-            width: 100%; /* برای ریسپانسیو بودن در موبایل */
+            max-width: 500px;
+            width: 100%;
             height: auto;
             border-radius: 12px;
             border: 1px solid #e2e8f0;
@@ -234,7 +226,6 @@
             margin-top: 20px;
             border-left: 5px solid var(--primary);
         }
-        /* 👇 تغییر رنگ دکمه دانلود به آبی روشن */
         .btn-download-ref {
             display: inline-block;
             background: #3399ff; /* آبی روشن */
@@ -246,10 +237,7 @@
             margin-top: 10px;
             transition: 0.2s;
         }
-        .btn-download-ref:hover { 
-            background-color: #2563eb; /* کمی تیره‌تر هنگام هاور */
-            transform: translateY(-2px); 
-        }
+        .btn-download-ref:hover { background-color: #2563eb; transform: translateY(-2px); }
 
         /* رفرنس‌ها */
         .ref-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
@@ -275,9 +263,7 @@
 
     <header class="hero">
         <div class="logo-container">
-            <div class="logo-inner">
-                <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/major.png?raw=true" alt="Parus Major" class="hero-logo">
-            </div>
+            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/major.png?raw=true" alt="Parus Major" class="hero-logo">
         </div>
         
         <h1>UPARUS: Genomic Resources for the Parus genus</h1>
