@@ -28,88 +28,62 @@
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
+            /* ارتفاع فشرده و جمع‌وجور */
             padding: 40px 20px 50px 20px; 
             text-align: center;
             position: relative; 
             overflow: hidden; 
         }
         
-        /* --- استایل جدید: کادر بیرونی (حاشیه سفید ضخیم) --- */
+        /* --- استایل کادر سفید گوشه (یک‌چهارم دایره) - بزرگتر شده --- */
         .logo-container {
             position: absolute;
             top: 0;
             left: 0;
-            /* اندازه کل کادر با احتساب حاشیه سفید */
-            width: 340px;  
-            height: 340px; 
-            background-color: white; /* رنگ حاشیه ضخیم */
-            border-bottom-right-radius: 100%; /* انحنای یک‌چهارم دایره */
-            box-shadow: 5px 5px 25px rgba(0,0,0,0.25); 
+            width: 300px;  /* 👈 سایز بزرگتر شد (قبلا ۲۲۰ بود) */
+            height: 300px; /* 👈 سایز بزرگتر شد */
+            background-color: white; 
+            border-bottom-right-radius: 100%; 
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.2); 
             z-index: 10;
         }
 
-        /* --- استایل جدید: کادر داخلی (نگهدارنده عکس) --- */
-        .logo-inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            /* اندازه کادر داخلی (کوچکتر از بیرونی برای ایجاد ضخامت حاشیه) */
-            width: 300px; 
-            height: 300px;
-            /* رنگ پس‌زمینه ملایم برای پشت عکس (شبیه به رنگ محیط پرنده) */
-            background-color: rgb(180, 160, 140); 
-            border-bottom-right-radius: 100%; /* همان انحنا */
-            overflow: hidden; /* 👈 مهم: بریدن قسمت‌های اضافی عکس */
-        }
-
-        /* --- استایل خود عکس پرنده (داخل کادر داخلی) --- */
+        /* --- استایل خود عکس پرنده - بزرگتر شده --- */
         .hero-logo {
             position: absolute;
-            /* تنظیم دقیق موقعیت عکس تا پرنده در مرکز قوس قرار بگیرد */
-            top: -20px;  
-            left: 20px;  
-            width: 280px; /* سایز عکس */
+            top: 30px;  /* جایگیری دقیق‌تر در کادر بزرگتر */
+            left: 30px; 
+            width: 200px; /* 👈 سایز پرنده بزرگتر شد (قبلا ۱۴۰ بود) */
             height: auto;
+            filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.3)); 
             transition: transform 0.3s ease;
         }
 
-        /* افکت هاور روی کل کادر */
         .logo-container:hover .hero-logo {
-            transform: scale(1.08) rotate(3deg); 
+            transform: scale(1.1) rotate(5deg); 
         }
 
-        /* تنظیمات موبایل (تبدیل به دایره کامل در وسط) */
+        /* تنظیمات موبایل (کمی بزرگتر برای موبایل هم) */
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
-                width: 180px;
-                height: 180px;
-                margin: 0 auto 25px auto;
-                border-radius: 50%; /* دایره کامل */
+                width: 160px; /* کمی بزرگتر برای موبایل */
+                height: 160px;
+                margin: 0 auto 20px auto;
+                border-radius: 50%; 
+                background-color: rgba(255,255,255,0.1); 
                 top: auto;
                 left: auto;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                box-shadow: none;
             }
             
-            .logo-inner {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                /* مرکز چین کردن کادر داخلی در کادر بیرونی */
-                top: 15px; 
-                left: 15px;
-            }
-
             .hero-logo {
-                /* مرکز چین کردن عکس در کادر داخلی */
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%); 
-                width: 140px;
-            }
-            
-            .logo-container:hover .hero-logo {
-                 transform: translate(-50%, -50%) scale(1.08);
+                width: 120px; /* کمی بزرگتر برای موبایل */
+                top: 50%;
+                left: 50%;
             }
         }
 
@@ -244,9 +218,7 @@
 
     <header class="hero">
         <div class="logo-container">
-            <div class="logo-inner">
-                <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/major.png?raw=true" alt="Parus Major" class="hero-logo">
-            </div>
+            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/major.png?raw=true" alt="Parus Major" class="hero-logo">
         </div>
         
         <h1>UPARUS: Genomic Resources for the Parus genus</h1>
