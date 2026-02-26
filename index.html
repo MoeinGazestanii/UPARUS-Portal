@@ -34,67 +34,60 @@
             overflow: hidden; 
         }
         
-        /* --- استایل لوگو (کادر سفید ضخیم) --- */
+        /* --- استایل لوگو (کادر سفید یک‌چهارم دایره - اصلاح شده) --- */
         .logo-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: 340px;  
-            height: 340px; 
+            width: 280px;  /* سایز مناسب برای کادر سفید */
+            height: 280px; 
             background-color: white; 
-            border-bottom-right-radius: 100%; 
-            box-shadow: 5px 5px 25px rgba(0,0,0,0.25); 
+            border-bottom-right-radius: 100%; /* انحنای یک‌چهارم دایره */
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); /* سایه نرم */
             z-index: 10;
         }
 
-        .logo-inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 300px; 
-            height: 300px;
-            background-color: rgb(180, 160, 140); 
-            border-bottom-right-radius: 100%; 
-            overflow: hidden; 
-        }
-
+        /* --- استایل خود عکس پرنده (داخل کادر سفید) --- */
         .hero-logo {
             position: absolute;
-            top: -20px;  
-            left: 20px;  
-            width: 280px; 
+            top: 25px;   /* تنظیم دقیق جای پرنده داخل انحنا */
+            left: 25px;  
+            width: 200px; /* سایز پرنده */
             height: auto;
+            /* سایه دادن به خود پرنده تا از زمینه سفید جدا شود */
+            filter: drop-shadow(5px 10px 10px rgba(0,0,0,0.3)); 
             transition: transform 0.3s ease;
         }
 
+        /* افکت هاور */
         .logo-container:hover .hero-logo {
             transform: scale(1.08) rotate(3deg); 
         }
 
-        /* تنظیمات موبایل */
+        /* تنظیمات موبایل (دایره ساده وسط) */
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
-                width: 180px;
-                height: 180px;
+                width: 160px;
+                height: 160px;
                 margin: 0 auto 25px auto;
-                border-radius: 50%; 
+                border-radius: 50%; /* دایره کامل */
                 top: auto;
                 left: auto;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                background-color: rgba(255,255,255,0.15); /* کمی شفاف در موبایل */
             }
-            .logo-inner {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                top: 15px; 
-                left: 15px;
-            }
+            
             .hero-logo {
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%); 
-                width: 140px;
+                transform: translate(-50%, -50%); /* مرکز چین کردن */
+                width: 130px;
+                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.3));
+            }
+
+            .logo-container:hover .hero-logo {
+                 transform: translate(-50%, -50%) scale(1.08);
             }
         }
 
@@ -269,9 +262,7 @@
 
     <header class="hero">
         <div class="logo-container">
-            <div class="logo-inner">
-                <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/major.png?raw=true" alt="Parus Major" class="hero-logo">
-            </div>
+            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/major.png?raw=true" alt="Parus Major" class="hero-logo">
         </div>
         
         <h1>UPARUS: Genomic Resources for the Parus genus</h1>
@@ -398,15 +389,11 @@
 
     <script>
         function openTab(tabId) {
-            // مخفی کردن همه تب‌ها
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            // غیرفعال کردن همه دکمه‌ها
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             
-            // نمایش تب انتخاب شده
             document.getElementById(tabId).classList.add('active');
             
-            // فعال کردن دکمه مربوطه
             if(tabId === 'mapTab') document.getElementById('btnMap').classList.add('active');
             if(tabId === 'pipelineTab') document.getElementById('btnPipeline').classList.add('active');
             if(tabId === 'tableTab') document.getElementById('btnTable').classList.add('active');
@@ -422,4 +409,3 @@
     </script>
 </body>
 </html>
-
